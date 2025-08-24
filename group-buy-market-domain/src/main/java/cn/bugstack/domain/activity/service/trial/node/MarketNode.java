@@ -53,7 +53,7 @@ public class MarketNode extends AbstractGroupBuyMarketSupport<MarketProductEntit
     public TrialBalanceEntity doApply(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
         log.info("拼团商品查询试算服务-MarketNode userId:{} requestParameter:{}", requestParameter.getUserId(), JSON.toJSONString(requestParameter));
 
-        // todo xfg 拼团优惠试算
+        // todo 拼团优惠试算
 
         return router(requestParameter, dynamicContext);
     }

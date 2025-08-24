@@ -9,6 +9,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.concurrent.*;
 
+/**
+ * @author Log
+ */
 @Slf4j
 @EnableAsync
 @Configuration
@@ -38,7 +41,8 @@ public class ThreadPoolConfig {
                 break;
         }
         // 创建线程池
-        return new ThreadPoolExecutor(properties.getCorePoolSize(),
+        return new ThreadPoolExecutor(
+                properties.getCorePoolSize(),
                 properties.getMaxPoolSize(),
                 properties.getKeepAliveTime(),
                 TimeUnit.SECONDS,
@@ -46,5 +50,4 @@ public class ThreadPoolConfig {
                 Executors.defaultThreadFactory(),
                 handler);
     }
-
 }

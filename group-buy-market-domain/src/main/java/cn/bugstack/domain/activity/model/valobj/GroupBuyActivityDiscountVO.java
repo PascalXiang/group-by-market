@@ -17,6 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupBuyActivityDiscountVO {
+
     /**
      * 活动ID
      */

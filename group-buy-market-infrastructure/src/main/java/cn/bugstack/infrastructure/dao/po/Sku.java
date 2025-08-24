@@ -37,4 +37,3 @@ public class Sku {
     private Date updateTime;
 
 }
-

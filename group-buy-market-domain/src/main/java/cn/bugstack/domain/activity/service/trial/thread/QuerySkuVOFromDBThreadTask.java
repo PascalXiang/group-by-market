@@ -11,6 +11,7 @@ import java.util.concurrent.Callable;
  * @Create 2025-08-25 0:51
  */
 public class QuerySkuVOFromDBThreadTask implements Callable<SkuVO> {
+
     private final String goodsId;
 
     private final IActivityRepository activityRepository;
@@ -24,4 +25,5 @@ public class QuerySkuVOFromDBThreadTask implements Callable<SkuVO> {
     public SkuVO call() throws Exception {
         return activityRepository.querySkuByGoodsId(goodsId);
     }
+
 }

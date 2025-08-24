@@ -37,4 +37,5 @@ public class QueryGroupBuyActivityDiscountVOThreadTask implements Callable<Group
     public GroupBuyActivityDiscountVO call() throws Exception {
         return activityRepository.queryGroupBuyActivityDiscountVO(source, channel);
     }
+
 }

@@ -9,6 +9,7 @@ import cn.bugstack.domain.activity.service.trial.factory.DefaultActivityStrategy
 import cn.bugstack.domain.activity.service.trial.thread.QueryGroupBuyActivityDiscountVOThreadTask;
 import cn.bugstack.domain.activity.service.trial.thread.QuerySkuVOFromDBThreadTask;
 import cn.bugstack.types.design.framework.tree.StrategyHandler;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +51,10 @@ public class MarketNode extends AbstractGroupBuyMarketSupport<MarketProductEntit
 
     @Override
     public TrialBalanceEntity doApply(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
+        log.info("拼团商品查询试算服务-MarketNode userId:{} requestParameter:{}", requestParameter.getUserId(), JSON.toJSONString(requestParameter));
+
+        // todo xfg 拼团优惠试算
+
         return router(requestParameter, dynamicContext);
     }
 
@@ -57,4 +62,5 @@ public class MarketNode extends AbstractGroupBuyMarketSupport<MarketProductEntit
     public StrategyHandler<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> get(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
         return endNode;
     }
+
 }

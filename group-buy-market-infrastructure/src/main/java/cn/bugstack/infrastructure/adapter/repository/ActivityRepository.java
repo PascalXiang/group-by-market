@@ -20,23 +20,25 @@ import javax.annotation.Resource;
  */
 @Repository
 public class ActivityRepository implements IActivityRepository {
+
     @Resource
     private IGroupBuyActivityDao groupBuyActivityDao;
     @Resource
     private IGroupBuyDiscountDao groupBuyDiscountDao;
+
     @Resource
     private ISkuDao skuDao;
 
     @Override
     public GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(String source, String channel) {
         // 根据SC渠道值查询配置中最新的1个有效的活动
-        GroupBuyActivity groupBuyActivityReq = GroupBuyActivity
-                .builder()
-                .source(source)
-                .channel(channel)
-                .build();
+        GroupBuyActivity groupBuyActivityReq = new GroupBuyActivity();
+        groupBuyActivityReq.setSource(source);
+        groupBuyActivityReq.setChannel(channel);
         GroupBuyActivity groupBuyActivityRes = groupBuyActivityDao.queryValidGroupBuyActivity(groupBuyActivityReq);
+
         String discountId = groupBuyActivityRes.getDiscountId();
+
         GroupBuyDiscount groupBuyDiscountRes = groupBuyDiscountDao.queryGroupBuyActivityDiscountByDiscountId(discountId);
         GroupBuyActivityDiscountVO.GroupBuyDiscount groupBuyDiscount = GroupBuyActivityDiscountVO.GroupBuyDiscount.builder()
                 .discountName(groupBuyDiscountRes.getDiscountName())
@@ -46,6 +48,7 @@ public class ActivityRepository implements IActivityRepository {
                 .marketExpr(groupBuyDiscountRes.getMarketExpr())
                 .tagId(groupBuyDiscountRes.getTagId())
                 .build();
+
         return GroupBuyActivityDiscountVO.builder()
                 .activityId(groupBuyActivityRes.getActivityId())
                 .activityName(groupBuyActivityRes.getActivityName())
@@ -74,4 +77,5 @@ public class ActivityRepository implements IActivityRepository {
                 .originalPrice(sku.getOriginalPrice())
                 .build();
     }
+
 }

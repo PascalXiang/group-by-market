@@ -25,4 +25,5 @@ public class SkuVO {
     private String goodsName;
     /** 原始价格 */
     private BigDecimal originalPrice;
+
 }

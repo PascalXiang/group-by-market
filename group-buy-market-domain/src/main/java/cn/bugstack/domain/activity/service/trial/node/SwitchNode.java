@@ -31,4 +31,5 @@ public class SwitchNode extends AbstractGroupBuyMarketSupport<MarketProductEntit
     public StrategyHandler<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> get(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
         return marketNode;
     }
+
 }

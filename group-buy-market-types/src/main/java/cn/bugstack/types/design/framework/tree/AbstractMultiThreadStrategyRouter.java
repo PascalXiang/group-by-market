@@ -11,15 +11,17 @@ import java.util.concurrent.TimeoutException;
  * @Desc
  * @Create 2025-08-24 23:10
  */
+@Getter
 public abstract class AbstractMultiThreadStrategyRouter<T, D, R> implements StrategyMapper<T, D, R>, StrategyHandler<T, D, R> {
 
-    @Getter
     @Setter
     protected StrategyHandler<T, D, R> defaultStrategyHandler = StrategyHandler.DEFAULT;
 
     public R router(T requestParameter, D dynamicContext) throws Exception {
         StrategyHandler<T, D, R> strategyHandler = get(requestParameter, dynamicContext);
-        if(null != strategyHandler) return strategyHandler.apply(requestParameter, dynamicContext);
+        if(null != strategyHandler) {
+            return strategyHandler.apply(requestParameter, dynamicContext);
+        }
         return defaultStrategyHandler.apply(requestParameter, dynamicContext);
     }
 
@@ -42,3 +44,4 @@ public abstract class AbstractMultiThreadStrategyRouter<T, D, R> implements Stra
     protected abstract R doApply(T requestParameter, D dynamicContext) throws Exception;
 
 }
+

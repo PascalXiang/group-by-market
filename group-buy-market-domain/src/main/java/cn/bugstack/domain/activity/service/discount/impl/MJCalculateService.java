@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 /**
  * @author Pascal
- * @Desc
+ * @Desc   满减优惠计算
  * @Create 2025-08-31 21:29
  */
 @Slf4j
